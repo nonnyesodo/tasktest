@@ -13,7 +13,8 @@ class Home extends StatelessWidget {
         body: SafeArea(
             child: Padding(
       padding: EdgeInsets.all(size.width * 0.03),
-      child: Column(children: [
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const Text('todo list'),
         BlocBuilder<TodoBloc, TodoState>(
           builder: (context, state) {
@@ -24,7 +25,11 @@ class Home extends StatelessWidget {
                       itemBuilder: (context, index) =>
                           ListTile(title: Text(state.tasks[index].title))));
             } else {
-              return const CircularProgressIndicator.adaptive();
+              return Column(
+                children: [
+                  const Text('Add task '),
+                ],
+              );
             }
           },
         ),
